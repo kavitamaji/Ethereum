@@ -3,6 +3,7 @@ contract TrustfundCorporation {
     address[] public deployedTrustfunds;
 
     function createTrustfund(uint minimum) public{
+      //  address newTrustfund =  address(new Trustfund(minimum));
        address newTrustfund =  address(new Trustfund(minimum, msg.sender));
        deployedTrustfunds.push(newTrustfund);
     }
@@ -31,12 +32,14 @@ contract Trustfund {
    uint public approversCount;
 
     modifier restricted() {
-        require(msg.sender==manager);
+        require(msg.sender == manager);
         _;
     }
 
     constructor (uint minimum, address creator) public{
-      manager = creator;
+      //  constructor (uint minimum) public{
+     // manager = address (0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c);
+        manager = creator;
        minimumcontribution = minimum;
     }
 
