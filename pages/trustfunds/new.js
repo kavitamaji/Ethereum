@@ -3,6 +3,7 @@ import {Form, Button, Input, Message} from 'semantic-ui-react';
 import Layout from '../../components/Layout';
 import corporation from '../../ethereum/corporation';
 import web3 from '../../ethereum/web3';
+import {Router} from '../../routes';
 
 class TrustfundNew extends Component{
   state={
@@ -20,6 +21,7 @@ class TrustfundNew extends Component{
       .send({
           from: accounts[0]
           });
+          Router.pushRoute  ('/');
       } catch (err){
         this.setState({errorMessage: err.message});
     }
@@ -28,7 +30,7 @@ class TrustfundNew extends Component{
   //!!this.state.errorMessage}>inverse of boolean of string
   render(){
     return (
-<Layout>
+    <Layout>
        <h3>Create a new Trust fund </h3>
        <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
              <Form.Field>
@@ -43,7 +45,7 @@ class TrustfundNew extends Component{
              <Message error header="Something went wrong" content={this.state.errorMessage}/>
              <Button loading={this.state.loading} primary>Create</Button>
            </Form>
-</Layout>
+        </Layout>
      );
   }
 }

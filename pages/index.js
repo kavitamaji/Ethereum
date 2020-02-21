@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Card , Button} from 'semantic-ui-react';
 import corporation from '../ethereum/corporation';
 import Layout from '../components/Layout';
+import {Link} from '../routes';
 
 class TrustFundIndex extends Component{
   static async getInitialProps(){
@@ -13,7 +14,10 @@ class TrustFundIndex extends Component{
     const items = this.props.trustfunds.map(address =>{
       return {
         header: address,
-        description: <a>View Trustfunds</a>,
+        description: (
+            <Link route={`/trustfunds/${address}`}>
+              <a>View Trustfunds</a>
+              </Link>),
         fluid : true
       };
     });
@@ -26,11 +30,15 @@ class TrustFundIndex extends Component{
       <div>
       <h3>Open Trust Funds</h3>
 
-      <Button floated="right"
-      content="Create Trust Fund"
-      icon ="add circle"
-      primary
-      />
+      <Link route="/trustfunds/new">
+          <a>
+              <Button floated="right"
+              content="Create Trust Fund"
+              icon ="add circle"
+              primary
+              />
+          </a>
+        </Link>
         {this.renderTrustfunds()}
       </div>
     </Layout>
