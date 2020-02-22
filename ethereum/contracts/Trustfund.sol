@@ -48,8 +48,9 @@ contract Trustfund {
         require (msg.value > minimumcontribution);
        // approvers.push(msg.sender); // push is available only to arrays
        approvers[msg.sender] = true;
+      //  require(!approvers[msg.sender]);
        approversCount++;
-    }
+       }
 
     function createRequest(string memory description, uint value, address payable recipient) public restricted {
       //  require (approvers[msg.sender]);//this will check if function is called by an approver
@@ -69,7 +70,6 @@ contract Trustfund {
         Request storage request = requests[index];
         require(approvers[msg.sender]);
         require(!request.approvals[msg.sender]);
-
         request.approvals[msg.sender]= true;
         request.approvalCount++;
     }
