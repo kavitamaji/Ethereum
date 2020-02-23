@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -321,13 +321,13 @@ class TrustFundIndex extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
 const routes = __webpack_require__(/*! next-routes */ "next-routes")();
 
-routes.add('/trustfunds/new', '/trustfunds/new').add('/trustfunds/:address', '/trustfunds/show'); //using : for wildcard address in url
-
+routes.add('/trustfunds/new', '/trustfunds/new').add('/trustfunds/:address', '/trustfunds/show') //using : for wildcard address in url
+.add('/trustfunds/:address/requests', '/trustfunds/requests/index').add('/trustfunds/:address/requests/new', '/trustfunds/requests/new');
 module.exports = routes;
 
 /***/ }),
 
-/***/ 3:
+/***/ 6:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
